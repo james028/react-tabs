@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 
 import Tab from './tab';
 
+const tabContent = {
+    backgroundColor: 'orange',
+    height: '100vh',
+    color: '#fff',
+    paddingTop: '50px'
+};
+
 class Tabs extends Component {
   static propTypes = {
     children: PropTypes.instanceOf(Array).isRequired,
@@ -33,7 +40,7 @@ class Tabs extends Component {
 
     return (
       <div className="tabs">
-        <ol className="tab-list">
+        <ul className="tab-list">
           {children.map((child) => {
             const { label } = child.props;
 
@@ -46,8 +53,8 @@ class Tabs extends Component {
               />
             );
           })}
-        </ol>
-        <div className="tab-content">
+        </ul>
+        <div style={tabContent}>
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;
